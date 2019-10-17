@@ -10,11 +10,11 @@ import {
   store,
 } from '../../utils'
 
-const app = () => (
+const App = () => (
   <Provider
     store={store}>
     <AppNavigator />
   </Provider>
 )
 
-export default app
+export default App

@@ -1,5 +1,5 @@
-import AppNavigator from './appNavigator'
+import AppNavigator from './AppNavigator'
 
-export default {
+export {
     AppNavigator,
 }
