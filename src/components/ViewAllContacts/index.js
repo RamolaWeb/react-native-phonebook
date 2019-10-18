@@ -3,8 +3,13 @@ import React, {
 } from 'react'
 import {
   FlatList,
+  View,
 } from 'react-native'
 import PropTypes from 'prop-types'
+import {
+  Fab,
+  Icon,
+} from 'native-base'
 
 import ContactsItem from '../ContactItem'
 import styles from './style'
@@ -12,6 +17,7 @@ import styles from './style'
 export default class ViewAllContact extends Component {
   static propTypes = {
     contacts: PropTypes.array.isRequired,
+    onAddClick: PropTypes.func.isRequired,
     onContactClick: PropTypes.func.isRequired,
     onMessageClick: PropTypes.func.isRequired,
     onCallClick: PropTypes.func.isRequired,
@@ -37,12 +43,26 @@ export default class ViewAllContact extends Component {
   render() {
     const {
       contacts,
+      onAddClick,
     } = this.props
     return (
-      <FlatList
-        data={contacts}
-        renderItem={this.renderItem}
-      />
+      <View
+        style={{
+          flex: 1,
+        }}
+      >
+        <FlatList
+          data={contacts}
+          renderItem={this.renderItem}
+        />
+        <Fab
+          onPress={onAddClick}
+        >
+          <Icon
+            name="share"
+          />
+        </Fab>
+      </View>
     )
   }
 }

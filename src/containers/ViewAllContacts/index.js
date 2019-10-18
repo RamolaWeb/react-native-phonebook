@@ -7,6 +7,10 @@ import {
 import PropTypes from 'prop-types'
 
 import {
+  screen,
+} from '../../constants'
+
+import {
   ViewAllContacts,
 } from '../../components'
 import {
@@ -33,6 +37,13 @@ class ViewAllContactsHolder extends Component {
 
   onCallClickListener = item => {}
 
+  onAddContactClickListener = () => {
+    const {
+      navigation,
+    } = this.props
+    navigation.navigate(screen.ADD_CONTACTS)
+  }
+
   render() {
     const {
       contacts,
@@ -40,6 +51,7 @@ class ViewAllContactsHolder extends Component {
     return (
       <ViewAllContacts
         contacts={contacts}
+        onAddClick={this.onAddContactClickListener}
         onContactClick={this.onContactClickListener}
         onMessageClick={this.onMessageClickListerer}
         onCallClick={this.onCallClickListener}
