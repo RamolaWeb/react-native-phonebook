@@ -6,7 +6,7 @@ import reducers from '../slices'
 
 const configureAppStore = () => {
   const store = configureStore({
-    reducers,
+    reducer: reducers,
   })
   if (process.env.NODE_ENV !== 'production' && module.hot) {
     module.hot.accept('../slices', () => store.replaceReducer(reducers))

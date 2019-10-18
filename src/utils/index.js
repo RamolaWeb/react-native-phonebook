@@ -1,5 +1,5 @@
-import store from './createStore'
+import configureAppStore from './createStore'
 
 export {
-  store,
+  configureAppStore,
 }

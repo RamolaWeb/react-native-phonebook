@@ -1,5 +1,5 @@
-import App from './App'
+import AddContacts from './AddContacts'
 
 export {
-  App,
+  AddContacts,
 }

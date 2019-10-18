@@ -1,5 +1,3 @@
-import {
-  App,
-} from './containers'
+import App from './app'
 
 export default App

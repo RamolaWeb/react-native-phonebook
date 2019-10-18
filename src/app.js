@@ -5,16 +5,16 @@ import {
 
 import {
   AppNavigator,
-} from '../../routes'
+} from './routes'
 import {
-  store,
-} from '../../utils'
+  configureAppStore,
+} from './utils'
 
+const store = configureAppStore()
 const App = () => (
   <Provider
     store={store}>
     <AppNavigator />
   </Provider>
 )
-
 export default App

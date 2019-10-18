@@ -5,10 +5,17 @@ import {
 import {
   createStackNavigator,
 } from 'react-navigation-stack'
-import AddContacts from '../containers'
+import {
+  AddContacts,
+} from '../containers'
 
 const AppNavigator = createStackNavigator({
-  AddContacts,
+  AddContacts : {
+    screen: AddContacts,
+    navigationOptions: {
+      title: 'Add To Contact'
+    },
+  },
 }, {
   initialRouteName: 'AddContacts'
 })
