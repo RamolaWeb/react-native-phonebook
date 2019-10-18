@@ -18,7 +18,7 @@ const addContactsSlice = createSlice({
       const {
         payload,
       } = action
-      console.log(payload)
+      console.log('data is', payload)
       addContact(payload)
       state.isSavingContacts = true
       state.isErrorSavingContacts = false

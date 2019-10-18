@@ -16,6 +16,7 @@ import {
   Input,
   DatePicker,
 } from 'native-base'
+import moment from 'moment'
 
 import {
   fieldType,
@@ -63,7 +64,7 @@ export default class AddContacts extends Component {
             <DatePicker
               defaultDate={new Date()}
               disabled={false}
-              onDateChange={date => onValueChanged(key, date)}
+              onDateChange={date => onValueChanged(key, new moment(date).format('dddd, MMMM Do YYYY, h:mm:ss a'))}
               placeHolderText={placeHolder}
             />
           )

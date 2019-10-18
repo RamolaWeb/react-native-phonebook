@@ -3,7 +3,7 @@ const contactSchema = {
   properties: {
     name: 'string',
     company: 'string',
-    birthday: 'date',
+    birthday: 'string',
     phone: 'string',
   },
 }

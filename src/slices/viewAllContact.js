@@ -6,6 +6,10 @@ import {
   getAllContact,
 } from '../repository'
 
+import {
+  map,
+} from 'loadsh'
+
 const viewAllContactSlice = createSlice({
   name: 'viewAllContact',
   initialState: {
@@ -13,7 +17,7 @@ const viewAllContactSlice = createSlice({
   },
   reducers: {
     viewAllContact: (state, action) => {
-      const contacts = getAllContact()
+      const contacts = map(getAllContact(), item => item)
       state.contacts = contacts
     }
   }

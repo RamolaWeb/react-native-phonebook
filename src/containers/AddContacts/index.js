@@ -40,7 +40,6 @@ class AddContactsHolder extends Component {
   }
 
   onTextChange = (key, value) => {
-    console.log(key, value)
     const {
       field,
     } = this.state
@@ -66,13 +65,15 @@ class AddContactsHolder extends Component {
     const {
       addContact,
     } = this.props
-    const payload = map(field, item => {
+    let payload = {}
+    field.forEach(item => {
       const {
         key,
         value,
       } = item
-      return {
-        [key]: value,
+      payload = {
+        ...payload,
+        [key]: value
       }
     })
     addContact(payload)

@@ -4,17 +4,16 @@ import React, {
 import {
   connect,
 } from 'react-redux'
-import {
-  View,
-  Text,
-} from 'react-native'
 import PropTypes from 'prop-types'
 
+import {
+  ViewAllContacts,
+} from '../../components'
 import {
   viewAllContact,
 } from '../../slices'
 
-class ViewAllContacts extends Component {
+class ViewAllContactsHolder extends Component {
   static propTypes = {
     contacts: PropTypes.array.isRequired,
     navigation: PropTypes.object.isRequired,
@@ -28,23 +27,32 @@ class ViewAllContacts extends Component {
     getAllContacts()
   }
 
+  onContactClickListener = item => {}
+  
+  onMessageClickListerer = item => {}
+
+  onCallClickListener = item => {}
+
   render() {
-    console.log(this.props)
+    const {
+      contacts,
+    } = this.props
     return (
-      <View>
-        <Text>
-          View All Contacts
-        </Text>
-      </View>
+      <ViewAllContacts
+        contacts={contacts}
+        onContactClick={this.onContactClickListener}
+        onMessageClick={this.onMessageClickListerer}
+        onCallClick={this.onCallClickListener}
+      />
     )
   }
 }
 
 const mapStateToProps = state => ({
-  contacts: state.viewAllContact.contacts
+  contacts: state.getAllContact.contacts
 })
 
 export default connect(mapStateToProps, {
   getAllContacts: viewAllContact,
-})(ViewAllContacts)
+})(ViewAllContactsHolder)
 

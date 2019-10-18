@@ -24,7 +24,7 @@ const AppNavigator = createStackNavigator({
     },
   }
 }, {
-  initialRouteName: 'AddContacts'
+  initialRouteName: 'ViewAllContacts'
 })
 
 export default createAppContainer(AppNavigator)
