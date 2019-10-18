@@ -2,6 +2,10 @@ import {
   createSlice,
 } from 'redux-starter-kit'
 
+import {
+  saveContact as addContact,
+} from '../repository'
+
 const addContactsSlice = createSlice({
   name: 'addContacts',
   initialState: {
@@ -15,9 +19,10 @@ const addContactsSlice = createSlice({
         payload,
       } = action
       console.log(payload)
+      addContact(payload)
       state.isSavingContacts = true
-      state.isErrorSavingContacts = true
-      state.errorSavingContacts = true
+      state.isErrorSavingContacts = false
+      state.errorSavingContacts = ''
     }
   }
 })

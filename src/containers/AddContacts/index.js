@@ -8,6 +8,7 @@ import PropTypes from 'prop-types'
 import {
   cloneDeep,
   findIndex,
+  map,
 } from 'loadsh'
 
 import {
@@ -65,13 +66,15 @@ class AddContactsHolder extends Component {
     const {
       addContact,
     } = this.props
-    const payload = {
-      name: "Sahil",
-      company: 'Far Eye',
-      number: '8894065231',
-      birthday: '12-12-2018',
-    }
-    console.log(this.props)
+    const payload = map(field, item => {
+      const {
+        key,
+        value,
+      } = item
+      return {
+        [key]: value,
+      }
+    })
     addContact(payload)
   }
 

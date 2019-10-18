@@ -24,14 +24,14 @@ import {
       placeHolder: 'Enter the company of contact',
     },
     {
-      key: 'phone_number',
+      key: 'phone',
       type: PHONE_NUMBER,
       required: true,
       value: '',
       placeHolder: 'Enter the phone number of contact',
     },
     {
-      key: 'dob',
+      key: 'birthday',
       type: DATE_OF_BIRTH,
       required: true,
       value: '',
