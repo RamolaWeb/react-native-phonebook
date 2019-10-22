@@ -66,7 +66,12 @@ export default class ViewAllContact extends Component {
           sections={contacts}
           renderItem={this.renderItem}
           renderSectionHeader={({ section: { title } }) => (
-            <Text>{title}</Text>
+            <Text
+              style={{
+                marginLeft: 10,
+                fontSize: 20,
+              }}
+            >{title}</Text>
           )}
         />
         <Fab

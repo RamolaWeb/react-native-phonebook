@@ -26,7 +26,6 @@ const viewAllContactSlice = createSlice({
       for (let i=0; i<contacts.length; i++) {
         const title = contacts[i].name.substring(0,1)
         const checkIndex = findIndex(data, o => o.title === title)
-        console.log('data extracted is ', title, checkIndex, contacts)
         if (checkIndex === -1) {
           const contactsData = filter(contacts, o => {
             const {
@@ -35,7 +34,7 @@ const viewAllContactSlice = createSlice({
             return name.substring(0,1) === title
           })
           data = [
-            ...data.splice(),
+            ...data,
             {
               title,
               data: contactsData
@@ -43,7 +42,6 @@ const viewAllContactSlice = createSlice({
           ]
         }
       }
-      console.log('data extracted is ', data)
       state.contacts = data
     }
   }
