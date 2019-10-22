@@ -7,12 +7,16 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native'
 import PropTypes from 'prop-types'
+import {
+  Icon,
+} from 'native-base'
 
 import styles from './styles'
 
 export default class ContactItem extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
     onCall: PropTypes.func.isRequired,
     onMessage: PropTypes.func.isRequired,
   }
@@ -22,6 +26,7 @@ export default class ContactItem extends Component {
       name,
       onCall,
       onMessage,
+      phone,
     } = this.props
     const {
       container,
@@ -32,6 +37,7 @@ export default class ContactItem extends Component {
       messageContainer,
       callText,
       messageText,
+      phoneText,
     } = styles
     return (
       <View
@@ -45,6 +51,11 @@ export default class ContactItem extends Component {
           >
             {name}
           </Text>
+          <Text
+            style={phoneText}
+          >
+            {phone}
+          </Text>
         </View>
         <View
           style={actionContainer}
@@ -55,11 +66,9 @@ export default class ContactItem extends Component {
             <View
               style={callContainer}
             >
-              <Text
-                style={callText}
-              >
-                Call
-              </Text>
+              <Icon
+                name="md-call"
+              />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -68,11 +77,9 @@ export default class ContactItem extends Component {
             <View
               style={messageContainer}
             >
-              <Text
-                style={messageText}
-              >
-                Message
-              </Text>
+              <Icon
+                name="md-share"
+              />
             </View>
           </TouchableWithoutFeedback>
         </View>

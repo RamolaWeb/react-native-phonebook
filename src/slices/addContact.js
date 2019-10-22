@@ -4,7 +4,12 @@ import {
 
 import {
   saveContact as addContact,
+  updateContact,
 } from '../repository'
+
+import {
+  viewAllContact,
+} from './viewAllContact'
 
 const addContactsSlice = createSlice({
   name: 'addContacts',
@@ -18,11 +23,17 @@ const addContactsSlice = createSlice({
       const {
         payload,
       } = action
-      console.log('data is', payload)
       addContact(payload)
+      viewAllContact()
       state.isSavingContacts = true
       state.isErrorSavingContacts = false
       state.errorSavingContacts = ''
+    },
+    updateContactDetails: (state, action) => {
+      const {
+        payload,
+      } = action
+      updateContact(payload)
     }
   }
 })
@@ -34,6 +45,7 @@ const {
 
 export const {
   saveContact,
+  updateContactDetails,
 } = actions
 
 export default reducer

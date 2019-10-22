@@ -3,8 +3,6 @@ import React, {
 } from 'react'
 import {
   View,
-  Text,
-  TouchableWithoutFeedback,
 } from 'react-native'
 import PropTypes from 'prop-types'
 import {
@@ -14,9 +12,11 @@ import {
   Item,
   Form,
   Input,
-  DatePicker,
+  Fab,
+  Icon,
 } from 'native-base'
 import moment from 'moment'
+import DatePicker from 'react-native-datepicker'
 
 import {
   fieldType,
@@ -62,9 +62,22 @@ export default class AddContacts extends Component {
         case DATE_OF_BIRTH:
           return (
             <DatePicker
-              defaultDate={new Date()}
-              disabled={false}
-              onDateChange={date => onValueChanged(key, new moment(date).format('dddd, MMMM Do YYYY, h:mm:ss a'))}
+            customStyles={{
+              dateIcon: {
+                position: 'absolute',
+                left: 0,
+                top: 20,
+                marginLeft: 0
+              },
+              dateInput: {
+                marginLeft: 36,
+                marginTop: 50,
+              }
+            }}
+              date={value}
+              format="dddd, MMMM Do YYYY, h:mm:ss a"
+              mode='date'
+              onDateChange={date => onValueChanged(key, date)}
               placeHolderText={placeHolder}
             />
           )
@@ -76,8 +89,6 @@ export default class AddContacts extends Component {
   render() {
     const {
       container,
-      footer,
-      footerText,
     } = styles
     const {
       onAddContact,
@@ -89,19 +100,13 @@ export default class AddContacts extends Component {
         <Form>
           {this.renderForm()}
         </Form>
-        <TouchableWithoutFeedback
+        <Fab
           onPress={onAddContact}
         >
-          <View
-            style={footer}
-          >
-            <Text
-              style={footerText}
-            >
-              Add To Contacts
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
+          <Icon
+            name="md-checkmark"
+          />
+        </Fab>
       </View>
     )
   }

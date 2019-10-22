@@ -17,6 +17,7 @@ import {
 
 import {
   saveContact,
+  updateContactDetails,
 } from '../../slices'
 
 import {
@@ -30,12 +31,13 @@ class AddContactsHolder extends Component {
     isContactSaved: PropTypes.bool.isRequired,
     isErrorInContactSaved: PropTypes.bool.isRequired,
     errorSavingContact: PropTypes.string.isRequired,
+    updateContact: PropTypes.func.isRequired,
   }
 
   constructor(props) {
     super(props)
     this.state = {
-      field: cloneDeep(fields)
+      field: this.preFillData()
     }
   }
 
@@ -64,7 +66,13 @@ class AddContactsHolder extends Component {
     } = this.state
     const {
       addContact,
+      updateContact,
+      navigation,
     } = this.props
+    const metaData = navigation.getParam('payload', {})
+    const {
+      mode,
+    } = metaData
     let payload = {}
     field.forEach(item => {
       const {
@@ -76,7 +84,35 @@ class AddContactsHolder extends Component {
         [key]: value
       }
     })
-    addContact(payload)
+    if (mode === 'edit') {
+      updateContact(payload)
+    }
+    else {
+      addContact(payload)
+    }
+  }
+
+  preFillData = () => {
+    const {
+      navigation,
+    } = this.props
+    const payload = navigation.getParam('payload', {})
+    const {
+      mode,
+      contact,
+    } = payload
+    if (mode === 'edit') {
+      return map(fields, item => {
+        const {
+          key,
+        } = item
+        return {
+          ...item,
+          value: contact[[key]]
+        }
+      })
+    }
+    return cloneDeep(fields)
   }
 
   render() {
@@ -101,4 +137,5 @@ const mapStateToProps = state => ({
 })
 export default connect(mapStateToProps, {
   addContact: saveContact,
+  updateContact: updateContactDetails,
 })(AddContactsHolder)

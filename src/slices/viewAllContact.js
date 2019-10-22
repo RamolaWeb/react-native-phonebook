@@ -8,6 +8,9 @@ import {
 
 import {
   map,
+  findIndex,
+  filter,
+  isUndefined,
 } from 'loadsh'
 
 const viewAllContactSlice = createSlice({
@@ -15,10 +18,33 @@ const viewAllContactSlice = createSlice({
   initialState: {
     contacts: [],
   },
+  viewAllContact,
   reducers: {
     viewAllContact: (state, action) => {
-      const contacts = map(getAllContact(), item => item)
-      state.contacts = contacts
+      const contacts = map(getAllContact(), item => ({...item}))
+      let data = []
+      for (let i=0; i<contacts.length; i++) {
+        const title = contacts[i].name.substring(0,1)
+        const checkIndex = findIndex(data, o => o.title === title)
+        console.log('data extracted is ', title, checkIndex, contacts)
+        if (checkIndex === -1) {
+          const contactsData = filter(contacts, o => {
+            const {
+              name,
+            } = o
+            return name.substring(0,1) === title
+          })
+          data = [
+            ...data.splice(),
+            {
+              title,
+              data: contactsData
+            }
+          ]
+        }
+      }
+      console.log('data extracted is ', data)
+      state.contacts = data
     }
   }
 })

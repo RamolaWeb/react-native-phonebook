@@ -2,8 +2,10 @@ import React, {
   Component,
 } from 'react'
 import {
-  FlatList,
+  SectionList,
   View,
+  Text,
+  TouchableWithoutFeedback,
 } from 'react-native'
 import PropTypes from 'prop-types'
 import {
@@ -26,17 +28,26 @@ export default class ViewAllContact extends Component {
   renderItem = ({item}) => {
     const {
       name,
+      phone,
     } = item
     const {
       onMessageClick,
       onCallClick,
+      onContactClick,
     } = this.props
     return (
-      <ContactsItem
-        name={name}
-        onCall={() => onCallClick(item)}
-        onMessage={() => onMessageClick(item)}
-      />
+      <TouchableWithoutFeedback
+        onPress={() => onContactClick(item)}
+      >
+        <View>
+          <ContactsItem
+            name={name}
+            phone={phone}
+            onCall={() => onCallClick(item)}
+            onMessage={() => onMessageClick(item)}
+          />
+        </View>
+      </TouchableWithoutFeedback>
     )
   }
 
@@ -51,15 +62,18 @@ export default class ViewAllContact extends Component {
           flex: 1,
         }}
       >
-        <FlatList
-          data={contacts}
+        <SectionList
+          sections={contacts}
           renderItem={this.renderItem}
+          renderSectionHeader={({ section: { title } }) => (
+            <Text>{title}</Text>
+          )}
         />
         <Fab
           onPress={onAddClick}
         >
           <Icon
-            name="share"
+            name="md-add"
           />
         </Fab>
       </View>

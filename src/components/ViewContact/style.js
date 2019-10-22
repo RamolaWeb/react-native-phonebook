@@ -6,14 +6,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  footer: {
-    flex: 0.2,
-    alignItems: 'center',
-    backgroundColor: '#ff0000',
-    justifyContent: 'center',
+  keyContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
   },
-  footerText: {
-    fontSize: 18,
+  valueText: {
+    fontSize: 15,
   },
 })
 

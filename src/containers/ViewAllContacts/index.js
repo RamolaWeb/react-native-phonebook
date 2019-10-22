@@ -17,6 +17,11 @@ import {
   viewAllContact,
 } from '../../slices'
 
+import {
+  makeCall,
+  shareContact,
+} from '../../utils'
+
 class ViewAllContactsHolder extends Component {
   static propTypes = {
     contacts: PropTypes.array.isRequired,
@@ -31,11 +36,38 @@ class ViewAllContactsHolder extends Component {
     getAllContacts()
   }
 
-  onContactClickListener = item => {}
+  onContactClickListener = item => {
+    const {
+      navigation,
+    } = this.props
+    const payload = {
+      contact: item,
+    }
+    navigation.navigate(screen.VIEW_CONTACTS, {
+      payload
+    })
+  }
   
-  onMessageClickListerer = item => {}
+  onMessageClickListerer = item => {
+    const {
+      phone,
+    } = item
+    const payload = {
+      phoneNo: phone,
+    }
+    shareContact(payload)
+  }
 
-  onCallClickListener = item => {}
+  onCallClickListener = item => {
+    const {
+      phone,
+    } = item
+    const args = {
+      phoneNo: phone,
+      makePrompt: false,
+    }
+    makeCall(args)
+  }
 
   onAddContactClickListener = () => {
     const {
@@ -48,6 +80,7 @@ class ViewAllContactsHolder extends Component {
     const {
       contacts,
     } = this.props
+    console.log('data is', contacts)
     return (
       <ViewAllContacts
         contacts={contacts}

@@ -8,6 +8,7 @@ import {
 import {
   AddContacts,
   ViewAllContacts,
+  ViewContact,
 } from '../containers'
 
 const AppNavigator = createStackNavigator({
@@ -19,6 +20,12 @@ const AppNavigator = createStackNavigator({
   },
   ViewAllContacts: {
     screen: ViewAllContacts,
+    navigationOptions: {
+      title: 'Contacts',
+    },
+  },
+  ViewContact: {
+    screen: ViewContact,
     navigationOptions: {
       title: 'Contacts',
     },
