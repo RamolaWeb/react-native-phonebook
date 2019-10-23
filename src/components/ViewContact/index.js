@@ -98,7 +98,7 @@ export default class ViewContact extends Component {
           <Text
             style={valueText}
           >
-            {new moment(birthday, 'dddd, MMMM Do YYYY, h:mm:ss a').format('dddd, MMMM Do YYYY')}
+            {new moment(birthday, 'Do, MMMM YYYY').format('Do, MMMM YYYY')}
           </Text>
         </View>
         <Fab
