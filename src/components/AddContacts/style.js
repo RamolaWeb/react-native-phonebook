@@ -15,6 +15,12 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 18,
   },
+  dobContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    padding: 15,
+  },
 })
 
 export default styles

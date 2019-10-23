@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
   valueText: {
     fontSize: 15,
   },
+  labelText: {
+    fontWeight: 'bold',
+  }
 })
 
 export default styles

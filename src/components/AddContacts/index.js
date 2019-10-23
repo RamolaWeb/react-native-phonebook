@@ -3,6 +3,7 @@ import React, {
 } from 'react'
 import {
   View,
+  Text,
 } from 'react-native'
 import PropTypes from 'prop-types'
 import {
@@ -15,7 +16,6 @@ import {
   Fab,
   Icon,
 } from 'native-base'
-import moment from 'moment'
 import DatePicker from 'react-native-datepicker'
 
 import {
@@ -40,6 +40,9 @@ export default class AddContacts extends Component {
       DATE_OF_BIRTH,
       PHONE_NUMBER,
     } = fieldType
+    const {
+      dobContainer,
+    } = styles
     return map(config, item => {
       const {
         key,
@@ -61,25 +64,36 @@ export default class AddContacts extends Component {
           )
         case DATE_OF_BIRTH:
           return (
-            <DatePicker
-            customStyles={{
-              dateIcon: {
-                position: 'absolute',
-                left: 0,
-                top: 20,
-                marginLeft: 0
-              },
-              dateInput: {
-                marginLeft: 36,
-                marginTop: 50,
-              }
-            }}
-              date={value}
-              format="dddd, MMMM Do YYYY, h:mm:ss a"
-              mode='date'
-              onDateChange={date => onValueChanged(key, date)}
-              placeHolderText={placeHolder}
+            <View
+              style={dobContainer}
+            >
+              <Text
+                style={{
+                  fontSize: 17,
+                }}
+              >
+                Select Date of Birth
+              </Text>
+              <DatePicker
+                customStyles={{
+                  dateIcon: {
+                    position: 'absolute',
+                    left: 0,
+                    top: 25,
+                    marginLeft: 0
+                  },
+                  dateInput: {
+                    marginLeft: 36,
+                    marginTop: 50,
+                  },
+                }}
+                date={value}
+                format="Do, MMMM YYYY"
+                mode='date'
+                onDateChange={date => onValueChanged(key, date)}
+                placeHolderText={placeHolder}
             />
+            </View>
           )
       }
     })

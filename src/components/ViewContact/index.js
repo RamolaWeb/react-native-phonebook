@@ -29,6 +29,7 @@ export default class ViewContact extends Component {
       container,
       keyContainer,
       valueText,
+      labelText,
     } = styles
     const {
       contact,
@@ -48,7 +49,7 @@ export default class ViewContact extends Component {
           style={keyContainer}
         >
           <Text
-            style={valueText}
+            style={labelText}
           >
             Name
           </Text>
@@ -62,7 +63,7 @@ export default class ViewContact extends Component {
           style={keyContainer}
         >
           <Text
-            style={valueText}
+            style={labelText}
           >
             Company
           </Text>
@@ -76,7 +77,7 @@ export default class ViewContact extends Component {
           style={keyContainer}
         >
           <Text
-            style={valueText}
+            style={labelText}
           >
             Phone
           </Text>
@@ -90,7 +91,7 @@ export default class ViewContact extends Component {
           style={keyContainer}
         >
           <Text
-            style={valueText}
+            style={labelText}
           >
             Date of Birth
           </Text>

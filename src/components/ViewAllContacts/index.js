@@ -63,6 +63,9 @@ export default class ViewAllContact extends Component {
         }}
       >
         <SectionList
+          contentContainerStyle={{
+            paddingBottom: 70,
+          }}
           sections={contacts}
           renderItem={this.renderItem}
           renderSectionHeader={({ section: { title } }) => (

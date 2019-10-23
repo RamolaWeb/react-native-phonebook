@@ -35,8 +35,6 @@ export default class ContactItem extends Component {
       actionContainer,
       callContainer,
       messageContainer,
-      callText,
-      messageText,
       phoneText,
     } = styles
     return (
@@ -68,6 +66,9 @@ export default class ContactItem extends Component {
             >
               <Icon
                 name="md-call"
+                style={{
+                  fontSize: 30,
+                }}
               />
             </View>
           </TouchableWithoutFeedback>
@@ -79,6 +80,9 @@ export default class ContactItem extends Component {
             >
               <Icon
                 name="md-share"
+                style={{
+                  fontSize: 30,
+                }}
               />
             </View>
           </TouchableWithoutFeedback>

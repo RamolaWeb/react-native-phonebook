@@ -20,16 +20,20 @@ const styles = StyleSheet.create({
     },
     actionContainer: {
       flex: 0.3,
-      justifyContent: 'center',
-      alignItems: 'flex-end',
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
       paddingHorizontal: 10,
     },
-    callContainer: {},
-    messageContainer: {},
-    callText: {
-      fontSize: 15,
+    callContainer: {
+      marginRight: 10,
     },
-    messageText: {
+    messageContainer: {},
+    nameText: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+    phoneText: {
       fontSize: 15,
     },
     phoneText: {},
